@@ -1,0 +1,563 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: ubuntu-bold;
+  src: url('./assets/fonts/Ubuntu-Bold.ttf');
+}
+
+@font-face {
+  font-family: ubuntu-medium;
+  src: url('./assets/fonts/Ubuntu-Medium.ttf');
+}
+
+@font-face {
+  font-family: ubuntu-regular;
+  src: url('./assets/fonts/Ubuntu-Regular.ttf');
+}
+
+:root {
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+}
+
+main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 180px 1fr 80px;
+  background-color: var(--magnolia);
+}
+
+.header {
+  background-image: url('./assets/images/bg-sidebar-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 40px;
+}
+
+.header .info {
+  display: none;
+}
+
+.header-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--white);
+  color: var(--white);
+  font-family: ubuntu-medium;
+}
+
+.header-circle.is-active {
+  background-color: var(--pastel-blue);
+  border: none;
+  color: var(--marine-blue);
+}
+
+.section-box {
+  width: 90%;
+  background-color: var(--white);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 30px;
+  border-radius: 10px;
+  transform: translateY(-60px);
+}
+
+.section-box-header {
+  display: grid;
+  gap: 10px;
+}
+
+.section-box .paragraph {
+  padding-bottom: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: relative;
+}
+
+.form .title {
+  font-size: 14px;
+  font-family: ubuntu-regular;
+}
+
+.form .input {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid var(--light-gray);
+  padding: 0 12px;
+  font-family: ubuntu-medium;
+  cursor: pointer;
+  color: var(--marine-blue);
+}
+
+.form .input:focus {
+  outline-color: var(--purplish-blue);
+}
+
+.form-field.is-empty::before,
+.form-field.is-invalid::before{
+  position: absolute;
+  right: 0;
+  color: var(--strawberry-red);
+  font-family: ubuntu-medium;
+  font-size: 14px;
+}
+
+.form-field.is-empty::before {
+  content: 'This field is required';
+}
+
+.form-field.is-invalid::before {
+  content: "This isn't a valid email";
+}
+
+.form-field.is-active .input {
+  border-color: var(--strawberry-red);
+  position: relative;
+}
+
+.title {
+  color: var(--marine-blue);
+  font-family: ubuntu-medium;
+}
+
+.paragraph {
+  color: var(--cool-gray);
+  font-family: ubuntu-regular;
+}
+
+.types {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.type {
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: max-content 1fr;
+  padding: 15px;
+  gap: 3px 15px;
+  cursor: pointer;
+}
+
+.type.is-selected {
+  border-color: var(--purplish-blue);
+  background-color: var(--magnolia);
+}
+
+.type .img {
+  grid-row: 1/3;
+}
+
+.type .title {
+  font-size: 18px;
+  font-family: ubuntu-regular;
+}
+
+.price {
+  font-size: 14px;
+  font-family: ubuntu-regular;
+  color: var(--cool-gray);
+}
+
+.type .offer {
+  color: var(--marine-blue);
+  grid-column: 2/3;
+  display: none;
+}
+
+.type .offer.is-active {
+  display: inline;
+}
+
+.duration-button-container {
+  height: 55px;
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: var(--magnolia);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.duration {
+  color: var(--cool-gray);
+  font-family: ubuntu-medium;
+}
+
+.duration.is-active {
+  color: var(--marine-blue);
+}
+
+.duration-button {
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--marine-blue);
+  display: flex;
+  align-items: center;
+  padding: 0 3px;
+  cursor: pointer;
+}
+
+.duration-button-circle {
+  background-color: var(--white);
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: transform .1s;
+}
+
+.duration-button-circle.is-active {
+  transform: translateX(22px);
+}
+
+.adds {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add {
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: max-content 1fr max-content;
+  padding: 15px;
+  gap: 3px 20px;
+  cursor: pointer;
+}
+
+.add.is-selected {
+  border-color: var(--purplish-blue);
+  background-color: var(--magnolia);
+}
+
+.add.is-selected .img-container {
+  background-color: var(--purplish-blue);
+  border: none;
+}
+
+.add .img-container {
+  grid-row: 1/3;
+  border: 1px solid var(--cool-gray);
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add .price {
+  grid-column: 3/4;
+  grid-row: 1/3;
+  color: var(--purplish-blue);
+}
+
+.add .title {
+  font-size: 16px;
+  font-family: ubuntu-regular;
+}
+
+.plan {
+  background-color: var(--magnolia);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.plan .type {
+  border: none;
+  justify-content: center;
+  padding: 0;
+  cursor: auto;
+}
+
+.plan .type .price {
+  grid-column: 2/3;
+  grid-row: 1/3;
+  justify-self: flex-end;
+  font-family: ubuntu-bold;
+  color: var(--marine-blue);
+}
+
+.change {
+  grid-column: 1/2;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  width: max-content;
+  font-size: 16px;
+  font-family: ubuntu-regular;
+  color: var(--cool-gray);
+  cursor: pointer;
+}
+
+.change:hover {
+  color: var(--purplish-blue);
+}
+
+.divider {
+  margin: 0 auto;
+  margin: 15px 0;
+}
+
+.plan .adds {
+  gap: 15px;
+}
+
+.plan .add {
+  cursor: auto;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.plan .add .name {
+  color: var(--cool-gray);
+  font-family: ubuntu-regular;
+}
+
+.plan .add .price {
+  color: var(--marine-blue);
+  font-family: ubuntu-medium;
+}
+
+.total-price {
+  margin-top: 15px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-price .total {
+  color: var(--cool-gray);
+  font-family: ubuntu-regular;
+}
+
+.total-price .price {
+  color: var(--purplish-blue);
+  font-family: ubuntu-bold;
+  font-size: 16px;
+}
+
+.buttons-section {
+  background-color: var(--white);
+}
+
+.buttons-section-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+} 
+
+.next-button {
+  padding: 12px 15px;
+  background-color: var(--marine-blue);
+  color: var(--white);
+  font-size: 16px;
+  font-family: ubuntu-regular;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.next-button.is-active {
+  background-color: var(--purplish-blue);
+}
+
+.back-button {
+  background-color: transparent;
+  margin: 0 20px;
+  color: var(--cool-gray);
+  font-size: 16px;
+  font-family: ubuntu-regular;
+  border: none;
+  cursor: pointer;
+}
+
+.step5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.step5 .paragraph {
+  font-size: 18px;
+}
+
+@media (hover: hover) {
+  .type:hover {
+    border-color: var(--purplish-blue);
+    background-color: var(--magnolia);
+  }
+
+  .add:hover {
+    border-color: var(--purplish-blue);
+    background-color: var(--magnolia);
+  }
+
+  .next-button:hover {
+    opacity: .9;
+    transition: opacity .15s;
+  }
+
+  .back-button:hover {
+    color: var(--marine-blue);
+    transition: color .15s;
+  }
+}
+
+@media (hover: none) {
+  .next-button:active {
+    opacity: .9;
+  }
+
+  .back-button:active {
+    color: var(--marine-blue);
+  }
+}
+
+@media (min-width: 768px) {
+  .main {
+    grid-template-columns: minmax(30%, 350px) minmax(70%, 1fr);
+    grid-template-rows: 1fr max-content;
+    background-color: var(--white);
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+  .header {
+    grid-row: 1/3;
+    background-image: url('./assets/images/bg-sidebar-desktop.svg');
+    border-radius: 15px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .header > div {
+    display: flex;
+    gap: 10px;
+    width: 160px;
+  }
+
+  .header .info {
+    display: grid
+  }
+
+  .header .info span:first-child {
+    color: var(--cool-gray);
+  }
+
+  .header .info span:last-child {
+    color: var(--white);
+  }
+
+  .main-section {
+    display: flex;
+  }
+
+  .section-box {
+    transform: none;
+    max-width: 600px;
+    gap: 30px;
+    padding: 0;
+  }
+
+  .section-box-header > .title {
+    font-size: 28px;
+  }
+
+  .form {
+    gap: 30px;
+  }
+
+  .form-field {
+    gap: 10px;
+  }
+
+  .buttons-section-container {
+    max-width: 600px;
+    padding: 40px 30px;
+  }
+
+  .types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .types .type {
+    grid-template-columns: none;
+    grid-template-rows: 100px;
+    padding: 30px 15px;
+  }
+
+  .type .img {
+    grid-row: auto;
+    align-self: flex-start;
+  }
+
+  .type .offer {
+    grid-column: auto;
+  }
+
+  .total-price .price {
+    font-size: 20px;
+  }
+
+  .step5 .title {
+    font-size: 28px;
+  }
+  
+  .step5 .paragraph {
+    font-size: 20px;
+  }
+}

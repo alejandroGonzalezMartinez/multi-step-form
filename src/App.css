@@ -142,7 +142,7 @@ main {
   content: "This isn't a valid email";
 }
 
-.form-field.is-active .input {
+.form-field.is-empty .input {
   border-color: var(--strawberry-red);
   position: relative;
 }
@@ -464,14 +464,28 @@ main {
 }
 
 @media (min-width: 768px) {
+  body {
+    background-color: var(--magnolia);
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .main {
     grid-template-columns: minmax(30%, 350px) minmax(70%, 1fr);
     grid-template-rows: 1fr max-content;
     background-color: var(--white);
-    max-width: 1200px;
+    min-height: auto;
+    height: 700px;
+    max-width: 1000px;
     width: 90%;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 20px;
+    border-radius: 20px;
 }
 
   .header {
